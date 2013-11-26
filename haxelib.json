@@ -1,0 +1,11 @@
+{
+  "name": "lime-build",
+  "url": "http://github.com/openfl/lime-build",
+  "license": "MIT",
+  "tags": [],
+  "description": "Supporting headers and binaries to build LIME from the source.",
+  "version": "1.0.0",
+  "releasenote": "Initial version",
+  "contributors": ["singmajesty"],
+  "dependencies": {}
+}

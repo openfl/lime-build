@@ -1,0 +1,23 @@
+
+
+To build OpenAL-soft as a static linked library on Windows:
+
+		Follow the instructions (go into build/ and use cmake .. to generate build files),
+		Look inside build/ for config.h , and find : 
+
+				#define AL_API  __declspec(dllexport)
+				#define ALC_API __declspec(dllexport)
+
+		Change these to :
+
+				#define AL_API  //__declspec(dllexport)
+				#define ALC_API //__declspec(dllexport)
+
+		Open the project up in VS, and set the OpenAL32 project (not : not the ALL_BUILD, the OpenAL32 project) properties (Under general) : 
+		    Change : Configuration Type -> Static library
+		    Change : Target Extension -> lib
+
+		Build the OpenAL project again, and the output folder should now contain the static OpenAL32.lib
+
+
+To build OpenAL-soft as dynamic, just follow the first instruction, using cmake .. and open up and build the dll.
