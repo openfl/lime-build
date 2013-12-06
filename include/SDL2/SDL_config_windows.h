@@ -105,12 +105,10 @@ typedef unsigned int uintptr_t;
 #define HAVE_STRCHR 1
 #define HAVE_STRRCHR 1
 #define HAVE_STRSTR 1
-// #define HAVE_ITOA 1
 #define HAVE__LTOA 1
 #define HAVE__ULTOA 1
 #define HAVE_STRTOL 1
 #define HAVE_STRTOUL 1
-// #define HAVE_STRTOLL 1
 #define HAVE_STRTOD 1
 #define HAVE_ATOI 1
 #define HAVE_ATOF 1
@@ -118,36 +116,41 @@ typedef unsigned int uintptr_t;
 #define HAVE_STRNCMP 1
 #define HAVE__STRICMP 1
 #define HAVE__STRNICMP 1
-// #define HAVE_SSCANF 1
-#define HAVE_M_PI 1
 #define HAVE_ATAN 1
 #define HAVE_ATAN2 1
 #define HAVE_CEIL 1
-// #define HAVE_COPYSIGN 1
 #define HAVE_COS 1
 #define HAVE_COSF 1
 #define HAVE_FABS 1
 #define HAVE_FLOOR 1
 #define HAVE_LOG 1
 #define HAVE_POW 1
-// #define HAVE_SCALBN 1
 #define HAVE_SIN 1
 #define HAVE_SINF 1
 #define HAVE_SQRT 1
+#if _MSC_VER >= 1800
+#define HAVE_STRTOLL 1
+#define HAVE_SSCANF 1
+#define HAVE_COPYSIGN 1
+#define HAVE_SCALBN 1
+#endif
+#if !defined(_MSC_VER) || defined(_USE_MATH_DEFINES)
+#define HAVE_M_PI 1
+#endif
 #else
 #define HAVE_STDARG_H   1
 #define HAVE_STDDEF_H   1
 #endif
 
 /* Enable various audio drivers */
-#define SDL_AUDIO_DRIVER_DSOUND 0
-#define SDL_AUDIO_DRIVER_XAUDIO2    0
+#define SDL_AUDIO_DRIVER_DSOUND 1
+#define SDL_AUDIO_DRIVER_XAUDIO2    1
 #define SDL_AUDIO_DRIVER_WINMM  1
 #define SDL_AUDIO_DRIVER_DISK   1
 #define SDL_AUDIO_DRIVER_DUMMY  1
 
 /* Enable various input drivers */
-//#define SDL_JOYSTICK_DINPUT 0
+#define SDL_JOYSTICK_DINPUT 1
 #define SDL_HAPTIC_DINPUT   1
 
 /* Enable various shared object loading systems */
@@ -164,7 +167,7 @@ typedef unsigned int uintptr_t;
 #define SDL_VIDEO_DRIVER_WINDOWS    1
 
 #ifndef SDL_VIDEO_RENDER_D3D
-#define SDL_VIDEO_RENDER_D3D    0
+#define SDL_VIDEO_RENDER_D3D    1
 #endif
 
 /* Enable OpenGL support */
@@ -180,6 +183,9 @@ typedef unsigned int uintptr_t;
 
 /* Enable system power support */
 #define SDL_POWER_WINDOWS 1
+
+/* Enable filesystem support */
+#define SDL_FILESYSTEM_WINDOWS  1
 
 /* Enable assembly routines (Win64 doesn't have inline asm) */
 #ifndef _WIN64
