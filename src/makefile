@@ -373,9 +373,9 @@ ifndef SS_WINRT
 ifndef SS_MAC64
 ifndef SS_TIZEN
 all: smpeg
-all: sdl
-all: sdl_ttf
-all: sdl_mixer
+all: sdl2
+#all: sdl_ttf
+#all: sdl_mixer
 endif
 endif
 endif
