@@ -88,8 +88,13 @@ ifdef SS_WEBOS
 endif
 
 ifdef SS_TIZEN
+ifdef SS_ARCH_X86
+	AR = i386-linux-gnueabi-ar rcs
+	AR2 = i386-linux-gnueabi-ranlib
+else
 	AR = arm-linux-gnueabi-ar rcs
 	AR2 = arm-linux-gnueabi-ranlib
+endif
 endif
 
 
