@@ -73,10 +73,8 @@ endif
 ifeq ("$(OS)","tizen")
 
   ifeq ("$(TIZEN_SDK)","")
-     TIZEN_SDK := C:/Development/Tizen/tizen-sdk
+     TIZEN_SDK := /home/joshua/Development/Tizen/tizen-sdk
   endif
-
-  PATH := $(TIZEN_SDK)/tools/arm-linux-gnueabi-gcc-4.5/bin:$(PATH)
 
 
   SS_TIZEN := 1
@@ -85,11 +83,35 @@ ifeq ("$(OS)","tizen")
   SS_CONFIG := tizen
   LIB_DIR := ../lib/Tizen
   #JCONFIG := jconfig.mac
-  SS_DLLEXT := .so
   SDL := ERROR
-  SS_CC := arm-linux-gnueabi-gcc "-I${TIZEN_SDK}/platforms/tizen2.2/rootstraps/tizen-device-2.2.native/usr/include" -DTIZEN -fpic -fPIC -O2 -fvisibility=hidden
-  SS_RANLIB :=  arm-linux-gnueabi-ranlib
-  SS_CREATELIB := arm-linux-gnueabi-ar -cr$(SPACE)
+  
+  ifeq ("$(ARCH)","x86")
+    
+    SS_ARCH_X86 := 1
+  	export SS_ARCH_X86
+
+    SS_LIBEXT := -x86.a
+    SS_DLLEXT := -x86.so
+  
+    PATH := $(TIZEN_SDK)/tools/i386-linux-gnueabi-gcc-4.5/bin:$(PATH)
+    
+    SS_CC := i386-linux-gnueabi-gcc "-I${TIZEN_SDK}/platforms/tizen2.2/rootstraps/tizen-emulator-2.2.native/usr/include" -DTIZEN -fpic -fPIC -O2 -fvisibility=hidden
+    SS_RANLIB :=  i386-linux-gnueabi-ranlib
+    SS_CREATELIB := i386-linux-gnueabi-ar -cr$(SPACE)
+  
+  else
+    
+    SS_DLLEXT := .so
+    
+    PATH := $(TIZEN_SDK)/tools/arm-linux-gnueabi-gcc-4.5/bin:$(PATH)
+    
+    SS_CC := arm-linux-gnueabi-gcc "-I${TIZEN_SDK}/platforms/tizen2.2/rootstraps/tizen-device-2.2.native/usr/include" -DTIZEN -fpic -fPIC -O2 -fvisibility=hidden
+    SS_RANLIB :=  arm-linux-gnueabi-ranlib
+    SS_CREATELIB := arm-linux-gnueabi-ar -cr$(SPACE)
+  
+  endif
+  
+  
 endif
 
 

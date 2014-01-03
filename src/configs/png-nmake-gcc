@@ -30,8 +30,13 @@ ifdef SS_WEBOS
 endif
 
 ifdef SS_TIZEN
+ifdef SS_ARCH_X86
+	AR_RC = i386-linux-gnueabi-ar rcs
+	RANLIB = i386-linux-gnueabi-ranlib
+else
 	AR_RC = arm-linux-gnueabi-ar rcs
 	RANLIB = arm-linux-gnueabi-ranlib
+endif
 endif
 
 CDEBUG = -g -DPNG_DEBUG=5
