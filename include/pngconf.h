@@ -339,7 +339,7 @@
 #endif
 
 /* enough people need this for various reasons to include it here */
-#if !defined(MACOS) && !defined(RISCOS) && !defined(_WIN32_WCE)
+#if !defined(MACOS) && !defined(RISCOS) && !defined(_WIN32_WCE) && !defined(EPPC)
 #  include <sys/types.h>
 #endif
 
