@@ -824,7 +824,7 @@ endif
 
 # --- SDL2 -----------------------
 
-SDL2 := SDL2-2.0.1
+SDL2 := SDL2-2.0.2-dev
 SDL2_INC := ../include/SDL2
 
 sdl2:$(SDL2)
