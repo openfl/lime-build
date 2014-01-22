@@ -109,6 +109,12 @@ make clean
 SS_64=1 make
 
 
+In order to build SDL2 with all features, you will need the following (or similar) packages installed on the build system (these are not runtime requirements afterward)
+
+
+sudo apt-get install build-essential mercurial make cmake autoconf automake libtool libasound2-dev lib^Clse-dev libaudio-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev libxinerama-dev libxxf86vm-dev libxss-dev libgl1-mesa-dev libesd0-dev libdbus-1-dev libudev-dev
+
+
 
 
 (Details for other platforms will be added in the future)
