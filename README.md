@@ -1,3 +1,5 @@
+_lime-build was used to build old versions of [Lime](https://github.com/openfl/lime) so this repository is now deprecated_
+
 lime-build
 ======
 
